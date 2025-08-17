@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste de Login - EstudanteTI</title>
+    <!-- Firebase SDK (atualizado para a versão 10.7.1) -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+    
+    <!-- Substitua pelas SUAS configurações -->
+    <script>
+        const firebaseConfig = {
+            apiKey: "AlzaSyB7sjQ3pUXkwvLMGEqdr8S5dD_pX50KMm0",
+            authDomain: "estudanteti.firebaseapp.com",
+            projectId: "estudanteti",
+            storageBucket: "estudanteti.appspot.com",
+            messagingSenderId: "749894872884",
+            appId: "COLE_SEU_APP_ID_AQUI" // Ex: "1:749894872884:web:3f0a9d7b1a2c4e5f"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+</head>
+<body>
+    <h2>Teste de Login Firebase</h2>
+    <button id="loginBtn">Login com Google</button>
+    
+    <script>
+        document.getElementById("loginBtn").addEventListener("click", () => {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithPopup(provider)
+                .then((result) => {
+                    alert("Login feito como: " + result.user.email);
+                    console.log("Usuário:", result.user);
+                })
+                .catch((error) => {
+                    alert("Erro: " + error.message);
+                    console.error("Detalhes:", error);
+                });
+        });
+    </script>
+</body>
+</html>
